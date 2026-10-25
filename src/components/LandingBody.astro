@@ -1,0 +1,222 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { CmsLanding } from '../lib/data';
+import EditShowcase from './EditShowcase.astro';
+
+interface Props { data?: CmsLanding | null }
+const { data } = Astro.props;
+const paragraphs = (t?: string | null) => (t ?? '').split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+const lines = (t?: string | null) => (t ?? '').split('\n').filter(Boolean);
+const year = new Date().getFullYear();
+const { brand, nav, hero, menu, highlights, about, visit, contact, footer } = data ?? ({} as CmsLanding);
+const input = 'mt-1.5 w-full rounded-xl border border-stone-400 bg-white px-4 py-3 text-ink shadow-sm focus:border-brand';
+---
+{data && (
+<>
+<header class="sticky top-0 z-40 border-b border-stone-200 bg-white/95 backdrop-blur">
+	<div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5">
+		<a href="#top" class="flex items-center gap-2.5 font-display text-lg font-semibold text-ink" data-tina-field={tinaField(brand, 'name')}>
+			{brand?.logo && <img src={brand.logo} alt="" width="36" height="36" class="size-9" data-tina-field={tinaField(brand, 'logo')} />}
+			<span>{brand?.name}</span>
+		</a>
+		<nav aria-label="Main" class="hidden md:block">
+			<ul class="flex items-center gap-7 text-sm font-medium">
+				{nav?.filter(Boolean).map((item) => (
+					<li><a href={item!.href} class="text-muted transition-colors hover:text-accent" data-tina-field={tinaField(item!)}>{item!.label}</a></li>
+				))}
+			</ul>
+		</nav>
+		<details class="relative md:hidden">
+			<summary class="cursor-pointer list-none rounded-full border border-stone-300 px-4 py-2 text-sm font-medium">Menu</summary>
+			<nav aria-label="Mobile" class="absolute right-0 mt-2 w-56 rounded-2xl border border-stone-200 bg-white p-2 shadow-lg">
+				<ul>
+					{nav?.filter(Boolean).map((item) => (
+						<li><a href={item!.href} class="block rounded-xl px-3 py-2.5 hover:bg-brand-soft">{item!.label}</a></li>
+					))}
+				</ul>
+			</nav>
+		</details>
+	</div>
+</header>
+
+<main id="main">
+	<!-- 1. Hero -->
+	<section id="top" class="bg-sand" aria-labelledby="hero-heading">
+		<div class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 md:grid-cols-[1.05fr_1fr] md:py-20 lg:gap-14">
+			<div>
+				{hero?.eyebrow && <p class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-widest text-accent ring-1 ring-stone-200" data-tina-field={tinaField(hero, 'eyebrow')}>{hero.eyebrow}</p>}
+				<h1 id="hero-heading" class="mt-5 text-balance text-4xl font-semibold leading-[1.08] tracking-tight text-ink md:text-6xl" data-tina-field={tinaField(hero, 'headline')}>{hero?.headline}</h1>
+				{hero?.subheadline && <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted" data-tina-field={tinaField(hero, 'subheadline')}>{hero.subheadline}</p>}
+				<div class="mt-8 flex flex-wrap gap-3">
+					{hero?.primaryCta?.label && <a href={hero.primaryCta.href ?? '#menu'} class="rounded-full bg-brand px-7 py-3.5 font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark" data-tina-field={tinaField(hero, 'primaryCta')}>{hero.primaryCta.label}</a>}
+					{hero?.secondaryCta?.label && <a href={hero.secondaryCta.href ?? '#edit'} class="rounded-full border-2 border-brand px-7 py-3 font-semibold text-brand transition-colors hover:bg-brand-soft" data-tina-field={tinaField(hero, 'secondaryCta')}>{hero.secondaryCta.label}</a>}
+				</div>
+			</div>
+			{hero?.image?.src && (
+				<div class="relative">
+					<img data-testid="hero-image" src={hero.image.src} alt={hero.image.alt ?? ''} width="1600" height="1000" fetchpriority="high" decoding="async"
+						class="aspect-[8/5] w-full rounded-[2rem] object-cover shadow-2xl shadow-brand/20" data-tina-field={tinaField(hero, 'image')} />
+					<p class="absolute -bottom-4 left-5 rounded-2xl bg-white px-4 py-3 text-sm shadow-lg ring-1 ring-stone-200">
+						<span class="block font-semibold text-ink">Editable by the owner</span>
+						<span class="text-muted">Texts · prices · photos</span>
+					</p>
+				</div>
+			)}
+		</div>
+	</section>
+
+	<!-- 2. Menu & prices -->
+	<section id="menu" class="py-16 md:py-24" aria-labelledby="menu-heading">
+		<div class="mx-auto max-w-6xl px-5">
+			<div class="mx-auto max-w-2xl text-center">
+				{menu?.kicker && <p class="text-sm font-semibold uppercase tracking-widest text-accent" data-tina-field={tinaField(menu, 'kicker')}>{menu.kicker}</p>}
+				<h2 id="menu-heading" class="mt-2 text-3xl font-semibold tracking-tight md:text-5xl" data-tina-field={tinaField(menu, 'heading')}>{menu?.heading}</h2>
+				{menu?.intro && <p class="mt-4 text-lg text-muted" data-tina-field={tinaField(menu, 'intro')}>{menu.intro}</p>}
+			</div>
+			<div class="mt-12 grid gap-8 md:grid-cols-2">
+				{menu?.groups?.filter(Boolean).map((g) => (
+					<div class="rounded-3xl bg-sand p-6 ring-1 ring-stone-200 md:p-8" data-tina-field={tinaField(g!)}>
+						<h3 class="text-2xl font-semibold" data-tina-field={tinaField(g!, 'title')}>{g!.title}</h3>
+						<ul class="mt-5 divide-y divide-stone-200">
+							{g!.items?.filter(Boolean).map((it) => (
+								<li class="py-4" data-testid="menu-item" data-tina-field={tinaField(it!)}>
+									<div class="flex items-baseline gap-3">
+										<span class="font-semibold text-ink" data-tina-field={tinaField(it!, 'name')}>{it!.name}</span>
+										{it!.tag && <span class="rounded-full bg-olive/10 px-2 py-0.5 text-xs font-semibold text-olive" data-tina-field={tinaField(it!, 'tag')}>{it!.tag}</span>}
+										<span aria-hidden="true" class="flex-1 translate-y-[-3px] border-b border-dotted border-stone-400"></span>
+										<span class="font-semibold tabular-nums text-brand" data-testid="menu-price" data-tina-field={tinaField(it!, 'price')}>{it!.price}</span>
+									</div>
+									{it!.description && <p class="mt-1 text-sm text-muted" data-tina-field={tinaField(it!, 'description')}>{it!.description}</p>}
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+			{menu?.note && <p class="mt-8 text-center text-sm text-muted" data-tina-field={tinaField(menu, 'note')}>{menu.note}</p>}
+		</div>
+	</section>
+
+	<!-- 3. Highlights -->
+	<section id="highlights" class="bg-brand-soft py-16 md:py-24" aria-labelledby="highlights-heading">
+		<div class="mx-auto max-w-6xl px-5">
+			<div class="max-w-2xl">
+				{highlights?.kicker && <p class="text-sm font-semibold uppercase tracking-widest text-accent" data-tina-field={tinaField(highlights, 'kicker')}>{highlights.kicker}</p>}
+				<h2 id="highlights-heading" class="mt-2 text-3xl font-semibold tracking-tight md:text-5xl" data-tina-field={tinaField(highlights, 'heading')}>{highlights?.heading}</h2>
+				{highlights?.intro && <p class="mt-4 text-lg text-muted" data-tina-field={tinaField(highlights, 'intro')}>{highlights.intro}</p>}
+			</div>
+			<ul class="mt-10 grid gap-6 md:grid-cols-3">
+				{highlights?.items?.filter(Boolean).map((item) => (
+					<li class="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-stone-200" data-tina-field={tinaField(item!)}>
+						{item!.image?.src && <img src={item!.image.src} alt={item!.image.alt ?? ''} width="1000" height="750" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover" />}
+						<div class="p-6">
+							<h3 class="text-xl font-semibold">{item!.title}</h3>
+							<p class="mt-2 text-muted">{item!.description}</p>
+						</div>
+					</li>
+				))}
+			</ul>
+		</div>
+	</section>
+
+	<!-- 4. About -->
+	<section id="about" class="py-16 md:py-24" aria-labelledby="about-heading">
+		<div class="mx-auto grid max-w-6xl items-center gap-10 px-5 md:grid-cols-2 lg:gap-16">
+			{about?.image?.src && <img src={about.image.src} alt={about.image.alt ?? ''} width="1200" height="900" loading="lazy" decoding="async" class="aspect-[4/3] w-full rounded-[2rem] object-cover" data-tina-field={tinaField(about, 'image')} />}
+			<div>
+				{about?.kicker && <p class="text-sm font-semibold uppercase tracking-widest text-accent" data-tina-field={tinaField(about, 'kicker')}>{about.kicker}</p>}
+				<h2 id="about-heading" class="mt-2 text-3xl font-semibold tracking-tight md:text-5xl" data-tina-field={tinaField(about, 'heading')}>{about?.heading}</h2>
+				<div class="mt-5 space-y-4 text-lg leading-relaxed text-muted" data-tina-field={tinaField(about, 'body')}>
+					{paragraphs(about?.body).map((p) => <p>{p}</p>)}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 5. Visit -->
+	<section id="visit" class="bg-brand py-16 text-white md:py-20" aria-labelledby="visit-heading">
+		<div class="mx-auto grid max-w-6xl gap-10 px-5 md:grid-cols-2">
+			<div>
+				<h2 id="visit-heading" class="text-3xl font-semibold tracking-tight md:text-5xl" data-tina-field={tinaField(visit, 'heading')}>{visit?.heading}</h2>
+				{visit?.intro && <p class="mt-4 max-w-md text-lg text-white/90" data-tina-field={tinaField(visit, 'intro')}>{visit.intro}</p>}
+				{visit?.address && (
+					<address class="mt-8 not-italic" data-tina-field={tinaField(visit, 'address')}>
+						<span class="block text-sm font-semibold uppercase tracking-widest text-[#f2c9a5]">Address</span>
+						{lines(visit.address).map((l) => <span class="mt-1 block text-lg">{l}</span>)}
+					</address>
+				)}
+			</div>
+			<div class="rounded-3xl bg-white/10 p-6 ring-1 ring-white/20 md:p-8">
+				<h3 class="text-xl font-semibold">Opening hours</h3>
+				<dl class="mt-4 divide-y divide-white/20">
+					{visit?.hours?.filter(Boolean).map((h) => (
+						<div class="flex justify-between gap-4 py-3" data-tina-field={tinaField(h!)}>
+							<dt>{h!.days}</dt>
+							<dd class="font-semibold tabular-nums">{h!.time}</dd>
+						</div>
+					))}
+				</dl>
+				{visit?.note && <p class="mt-4 text-sm text-white/90" data-tina-field={tinaField(visit, 'note')}>{visit.note}</p>}
+			</div>
+		</div>
+	</section>
+
+	<!-- 6. Edit it yourself (portfolio showcase, not CMS content) -->
+	<EditShowcase />
+
+	<!-- 7. Contact form (demo: nothing is sent) -->
+	<section id="contact" class="bg-sand py-16 md:py-24" aria-labelledby="contact-heading">
+		<div class="mx-auto max-w-2xl px-5">
+			<h2 id="contact-heading" class="text-3xl font-semibold tracking-tight md:text-5xl" data-tina-field={tinaField(contact, 'heading')}>{contact?.heading}</h2>
+			{contact?.intro && <p class="mt-4 text-lg text-muted" data-tina-field={tinaField(contact, 'intro')}>{contact.intro}</p>}
+			<p class="mt-5 rounded-2xl border border-dashed border-accent/60 bg-white px-4 py-3 text-sm text-ink">
+				<strong>Demo form.</strong> Messages are checked in your browser only and are <strong>not sent or stored</strong> anywhere.
+			</p>
+			<!-- Inputs deliberately have no "name" attributes: even without JavaScript, submitting sends no data. -->
+			<form id="contact-form" action="#contact" method="get" class="mt-6 space-y-5 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-stone-200 md:p-8" novalidate data-success={contact?.successMessage ?? 'Thank you!'}>
+				<div class="grid gap-5 sm:grid-cols-2">
+					<div>
+						<label for="cf-name" class="block font-semibold">Name <span aria-hidden="true" class="text-accent">*</span></label>
+						<input id="cf-name" type="text" autocomplete="name" required maxlength="100" class={input} />
+					</div>
+					<div>
+						<label for="cf-email" class="block font-semibold">Email <span aria-hidden="true" class="text-accent">*</span></label>
+						<input id="cf-email" type="email" autocomplete="email" required maxlength="200" class={input} />
+					</div>
+				</div>
+				<div>
+					<label for="cf-message" class="block font-semibold">Message <span aria-hidden="true" class="text-accent">*</span></label>
+					<textarea id="cf-message" rows="5" required maxlength="5000" class={input}></textarea>
+				</div>
+				<p id="contact-status" role="status" aria-live="polite" class="min-h-6 font-semibold"></p>
+				<button type="submit" class="rounded-full bg-brand px-8 py-3.5 font-semibold text-white transition-colors hover:bg-brand-dark disabled:opacity-60" data-tina-field={tinaField(contact, 'submitLabel')}>{contact?.submitLabel ?? 'Send'}</button>
+			</form>
+		</div>
+	</section>
+</main>
+
+<footer class="bg-ink py-12 text-stone-200">
+	<div class="mx-auto grid max-w-6xl gap-8 px-5 md:grid-cols-3">
+		<div>
+			<p class="font-display text-lg font-semibold text-white">{brand?.name}</p>
+			{footer?.tagline && <p class="mt-2 text-sm" data-tina-field={tinaField(footer, 'tagline')}>{footer.tagline}</p>}
+		</div>
+		<div class="text-sm">
+			{footer?.email && <a href={`mailto:${footer.email}`} class="underline hover:text-white" data-tina-field={tinaField(footer, 'email')}>{footer.email}</a>}
+			{!!footer?.social?.length && (
+				<ul class="mt-3 flex gap-4" aria-label="Social media">
+					{footer.social.filter(Boolean).map((s) => <li><a href={s!.href} class="underline hover:text-white" rel="noopener" data-tina-field={tinaField(s!)}>{s!.label}</a></li>)}
+				</ul>
+			)}
+		</div>
+		<p class="text-sm md:text-right">
+			<a href="/edit-it-yourself/" class="underline hover:text-white">How the editing works</a>
+		</p>
+	</div>
+	<div class="mx-auto mt-8 flex max-w-6xl flex-col gap-2 border-t border-white/15 px-5 pt-6 text-xs text-stone-300 sm:flex-row sm:justify-between">
+		<p data-tina-field={tinaField(footer, 'legal')}>{footer?.legal ?? `© ${year}`}</p>
+		<p><strong class="text-white">Demo website by Ivan Litvin</strong> · fictional business, sample content</p>
+	</div>
+</footer>
+</>
+)}

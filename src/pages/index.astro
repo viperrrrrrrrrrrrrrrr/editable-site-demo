@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import LandingBody from '../components/LandingBody.astro';
+import { getLanding } from '../lib/data';
+import { islands } from '../lib/islands';
+
+const data = (await getLanding()).data?.landing;
+if (!data) return new Response('Not Found', { status: 404 });
+---
+<Layout
+	title={data.seo?.title ?? data.brand?.name ?? 'Home'}
+	description={data.seo?.description}
+	ogImage={data.seo?.ogImage}
+	ogImageAlt={data.seo?.ogImageAlt}
+	siteName={data.brand?.name}
+>
+	<TinaIsland name="landing" wrapper={islands.landing.wrapper} primary>
+		<LandingBody data={data} />
+	</TinaIsland>
+	<script>
+		import { initContactForm } from '../lib/contact-form';
+		initContactForm();
+	</script>
+</Layout>

@@ -1,0 +1,60 @@
+---
+// Portfolio showcase: shows the TinaCMS editing experience as a recording + screenshots.
+// Hard-coded on purpose (not CMS content) so the demo explanation can't be edited away.
+const steps = [
+	{ title: 'Open the editor', text: 'The owner logs in at yoursite.com/admin and sees their own page next to simple, labelled fields.' },
+	{ title: 'Click and type', text: 'Change a price, a heading or a photo. The page preview updates live while typing.' },
+	{ title: 'Press Save', text: 'The change goes live automatically after a quick rebuild, typically in a minute or two. No developer, no code.' },
+];
+---
+<section id="edit" class="py-16 md:py-24" aria-labelledby="edit-heading">
+	<div class="mx-auto max-w-6xl px-5">
+		<div class="mx-auto max-w-2xl text-center">
+			<p class="text-sm font-semibold uppercase tracking-widest text-accent">For business owners</p>
+			<h2 id="edit-heading" class="mt-2 text-3xl font-semibold tracking-tight md:text-5xl">Edit it yourself, no developer needed</h2>
+			<p class="mt-4 text-lg text-muted">This site is hand-coded for speed, but every text, price and photo above is editable in a visual editor. Here is a real recording of changing a price.</p>
+		</div>
+
+		<div class="mt-12 grid items-center gap-10 lg:grid-cols-[1fr_1.6fr]">
+			<ol class="space-y-6">
+				{steps.map((s, i) => (
+					<li class="flex gap-4">
+						<span aria-hidden="true" class="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand font-display text-lg font-semibold text-white">{i + 1}</span>
+						<div>
+							<h3 class="text-xl font-semibold">{s.title}</h3>
+							<p class="mt-1 text-muted">{s.text}</p>
+						</div>
+					</li>
+				))}
+			</ol>
+			<figure class="overflow-hidden rounded-2xl bg-stone-100 shadow-2xl shadow-brand/20 ring-1 ring-stone-300">
+				<div class="flex items-center gap-1.5 border-b border-stone-300 bg-stone-200 px-4 py-2.5" aria-hidden="true">
+					<span class="size-3 rounded-full bg-[#ec6a5e]"></span><span class="size-3 rounded-full bg-[#f4bf4f]"></span><span class="size-3 rounded-full bg-[#61c554]"></span>
+					<span class="ml-3 truncate rounded-md bg-white px-3 py-0.5 text-xs text-muted">yoursite.com/admin</span>
+				</div>
+				<picture>
+					<source media="(prefers-reduced-motion: reduce)" srcset="/edit-demo/editor-after.webp" />
+					<img src="/edit-demo/edit-price.webp" width="960" height="600" loading="lazy" decoding="async" class="block h-auto w-full"
+						alt="Screen recording of the editor: the Flat white price is changed from $4.20 to $4.60, the page preview updates instantly, and the change is saved." />
+				</picture>
+				<figcaption class="bg-white px-4 py-3 text-sm text-muted">Recorded in the TinaCMS editor running locally on this exact site.</figcaption>
+			</figure>
+		</div>
+
+		<div class="mt-14 grid gap-6 md:grid-cols-2">
+			<figure class="rounded-3xl bg-sand p-4 ring-1 ring-stone-200">
+				<img src="/edit-demo/site-before.webp" width="1000" height="560" loading="lazy" decoding="async" class="h-auto w-full rounded-2xl ring-1 ring-stone-200" alt="Menu section before the edit, showing Flat white at $4.20" />
+				<figcaption class="mt-3 px-1 font-semibold">Before: <span class="font-normal text-muted">Flat white $4.20</span></figcaption>
+			</figure>
+			<figure class="rounded-3xl bg-sand p-4 ring-1 ring-stone-200">
+				<img src="/edit-demo/site-after.webp" width="1000" height="560" loading="lazy" decoding="async" class="h-auto w-full rounded-2xl ring-1 ring-stone-200" alt="Menu section after the edit, showing Flat white at $4.60" />
+				<figcaption class="mt-3 px-1 font-semibold">After saving: <span class="font-normal text-muted">Flat white $4.60</span></figcaption>
+			</figure>
+		</div>
+
+		<p class="mx-auto mt-10 max-w-3xl text-center text-sm text-muted">
+			On this public demo the editor is shown as a recording. In a client project it runs at <code>/admin</code> behind a secure login (TinaCMS + GitHub, free tier for small sites).
+			<a href="/edit-it-yourself/" class="font-semibold text-brand underline underline-offset-4 hover:text-accent">See the full step-by-step walkthrough</a>
+		</p>
+	</div>
+</section>

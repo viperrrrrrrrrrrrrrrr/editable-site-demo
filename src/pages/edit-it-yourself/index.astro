@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const shots = [
+	{ n: 1, title: 'The owner opens the editor', text: 'Their real page on the right, simple labelled sections on the left: "Top banner", "Menu & prices", "Opening hours"… No code, no technical terms.', src: '/edit-demo/editor-before.webp', alt: 'TinaCMS editor with the list of menu items on the left and the live café page on the right' },
+	{ n: 2, title: 'Changes a price and sees it live', text: 'Typing a new price for the Flat white updates the preview instantly, before anything is published.', src: '/edit-demo/editor-after.webp', alt: 'Editor with the Flat white price field changed to $4.60 and the preview already showing $4.60' },
+	{ n: 3, title: 'Swaps a photo', text: 'Upload a new picture from a phone or computer, add a one-line description for accessibility, done.', src: '/edit-demo/editor-photo.webp', alt: 'Editor photo field with a newly uploaded croissant photo, shown in the page preview' },
+	{ n: 4, title: 'Presses Save', text: 'The change is saved to the website’s content. On the live site it goes online after an automatic rebuild, typically within a couple of minutes.', src: '/edit-demo/site-after-full.webp', alt: 'The café website menu after saving, showing the new Flat white price of $4.60' },
+];
+const credits = ['Perry Merrity II', 'Krists Luhaers', 'Juno Jo', 'Phil Hearing', 'Humphrey M', 'Khanh Do'];
+---
+<Layout title="How editing works — Ember & Oat Café demo by Ivan Litvin" description="Step-by-step screenshots of a business owner editing texts, prices and photos on a fast, hand-coded website with TinaCMS. Portfolio demo by Ivan Litvin.">
+	<header class="border-b border-stone-200 bg-white">
+		<div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5">
+			<a href="/" class="flex items-center gap-2.5 font-display text-lg font-semibold text-ink">
+				<img src="/uploads/logo-ember-oat.svg" alt="" width="36" height="36" class="size-9" />
+				<span>Ember &amp; Oat Café</span>
+			</a>
+			<a href="/" class="rounded-full border border-stone-300 px-4 py-2 text-sm font-medium hover:bg-brand-soft">← Back to the site</a>
+		</div>
+	</header>
+	<main id="main">
+		<section class="bg-sand" aria-labelledby="page-heading">
+			<div class="mx-auto max-w-3xl px-5 py-14 text-center md:py-20">
+				<p class="text-sm font-semibold uppercase tracking-widest text-accent">Walkthrough</p>
+				<h1 id="page-heading" class="mt-3 text-balance text-4xl font-semibold leading-tight tracking-tight md:text-6xl">How the owner edits this website</h1>
+				<p class="mt-5 text-lg text-muted">A fast, hand-coded site usually means calling a developer for every small change. Not here: texts, prices and photos are edited in a visual editor (TinaCMS). These screenshots were taken on this exact site.</p>
+			</div>
+		</section>
+
+		<section class="py-14 md:py-20" aria-labelledby="steps-heading">
+			<h2 id="steps-heading" class="sr-only">Step by step</h2>
+			<ol class="mx-auto max-w-5xl space-y-16 px-5">
+				{shots.map((s) => (
+					<li>
+						<div class="flex items-start gap-4">
+							<span aria-hidden="true" class="flex size-10 shrink-0 items-center justify-center rounded-full bg-brand font-display text-lg font-semibold text-white">{s.n}</span>
+							<div>
+								<h3 class="text-2xl font-semibold md:text-3xl">{s.title}</h3>
+								<p class="mt-2 max-w-2xl text-lg text-muted">{s.text}</p>
+							</div>
+						</div>
+						<img src={s.src} alt={s.alt} width="1280" height="800" loading={s.n === 1 ? 'eager' : 'lazy'} decoding="async" class="mt-6 h-auto w-full rounded-2xl shadow-xl shadow-brand/15 ring-1 ring-stone-300" />
+					</li>
+				))}
+			</ol>
+		</section>
+
+		<section class="bg-brand-soft py-14 md:py-20" aria-labelledby="what-heading">
+			<div class="mx-auto grid max-w-5xl gap-10 px-5 md:grid-cols-2">
+				<div>
+					<h2 id="what-heading" class="text-3xl font-semibold tracking-tight">What the owner can edit</h2>
+					<ul class="mt-5 list-disc space-y-2 pl-5 text-lg text-muted">
+						<li>Headlines, paragraphs and button texts</li>
+						<li>Menu items, descriptions and prices</li>
+						<li>Photos and their descriptions</li>
+						<li>Opening hours, address and contact details</li>
+						<li>Google title, description and social share image</li>
+					</ul>
+				</div>
+				<div>
+					<h2 class="text-3xl font-semibold tracking-tight">How it is built</h2>
+					<ul class="mt-5 list-disc space-y-2 pl-5 text-lg text-muted">
+						<li>Hand-coded with Astro and Tailwind CSS: static HTML, almost no JavaScript</li>
+						<li>TinaCMS visual editor, content stored in the site’s own Git repository</li>
+						<li>Hosted on Cloudflare Pages’ global network</li>
+						<li>Accessible: keyboard friendly, checked with axe, alt text required for photos</li>
+						<li>Contact form with spam protection (on this demo: not connected)</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-14" aria-labelledby="cta-heading">
+			<div class="mx-auto max-w-2xl px-5 text-center">
+				<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight">Want a site like this for your business?</h2>
+				<p class="mt-3 text-lg text-muted">This is a portfolio demo by Ivan Litvin. Ember &amp; Oat Café, its menu, prices and hours are fictional.</p>
+				<a href="/" class="mt-7 inline-block rounded-full bg-brand px-7 py-3.5 font-semibold text-white hover:bg-brand-dark">Back to the demo site</a>
+			</div>
+		</section>
+	</main>
+	<footer class="bg-ink py-8 text-xs text-stone-300">
+		<div class="mx-auto flex max-w-6xl flex-col gap-2 px-5 sm:flex-row sm:justify-between">
+			<p>Photos from Unsplash (Unsplash License) by {credits.join(', ')}.</p>
+			<p><strong class="text-white">Demo website by Ivan Litvin</strong> · fictional business</p>
+		</div>
+	</footer>
+</Layout>

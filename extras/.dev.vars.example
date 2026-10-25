@@ -1,0 +1,6 @@
+# Copy to .dev.vars for `wrangler pages dev`. In production set these in the Cloudflare dashboard.
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+EMAIL_PROVIDER=log
+CONTACT_TO_EMAIL=contact@example.org
+CONTACT_FROM_EMAIL=Website <no-reply@example.org>
+# RESEND_API_KEY=re_xxx   (production only)

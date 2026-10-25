@@ -1,0 +1,6 @@
+{
+	// Cloudflare Pages config for the static demo (no Functions: the demo contact form sends nothing).
+	"name": "editable-site-demo",
+	"pages_build_output_dir": "./dist/client",
+	"compatibility_date": "2026-06-01"
+}

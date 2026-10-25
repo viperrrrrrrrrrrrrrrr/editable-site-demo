@@ -1,0 +1,91 @@
+{
+  "seo": {
+    "title": "Ember & Oat Café — editable website demo by Ivan Litvin",
+    "description": "Demo website for a fictional neighbourhood café. Fast, hand-coded, and the owner can edit texts, prices and photos without a developer.",
+    "ogImage": "/uploads/og-cafe.jpg",
+    "ogImageAlt": "A flat white with latte art on a sunlit wooden table"
+  },
+  "brand": { "name": "Ember & Oat Café", "logo": "/uploads/logo-ember-oat.svg" },
+  "nav": [
+    { "label": "Menu", "href": "#menu" },
+    { "label": "About", "href": "#about" },
+    { "label": "Visit", "href": "#visit" },
+    { "label": "Edit it yourself", "href": "#edit" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "hero": {
+    "eyebrow": "Neighbourhood café · fictional demo",
+    "headline": "Slow coffee, warm pastries and a table by the window",
+    "subheadline": "Ember & Oat is a made-up café used to show a fast, hand-coded website whose owner can update the menu, prices and photos on their own — no developer needed.",
+    "primaryCta": { "label": "See the menu", "href": "#menu" },
+    "secondaryCta": { "label": "How editing works", "href": "#edit" },
+    "image": { "src": "/uploads/cafe-interior.webp", "alt": "Quiet café interior with wooden chairs, a round table and soft window light" }
+  },
+  "menu": {
+    "kicker": "Sample menu",
+    "heading": "Today’s menu",
+    "intro": "Every dish, description and price below can be changed by the owner in a simple editor.",
+    "groups": [
+      {
+        "title": "Coffee & drinks",
+        "items": [
+          { "name": "Espresso", "price": "$3.00", "description": "Double shot, house blend", "tag": "" },
+          { "name": "Flat white", "price": "$4.20", "description": "Velvety milk, double ristretto", "tag": "Popular" },
+          { "name": "Oat cappuccino", "price": "$4.50", "description": "Made with oat milk, light cocoa", "tag": "Vegan" },
+          { "name": "Filter of the week", "price": "$4.00", "description": "Hand-poured V60, rotating beans", "tag": "" },
+          { "name": "Chai latte", "price": "$4.40", "description": "Spiced black tea, steamed milk", "tag": "" }
+        ]
+      },
+      {
+        "title": "Bakery & brunch",
+        "items": [
+          { "name": "Butter croissant", "price": "$3.50", "description": "Baked every morning", "tag": "" },
+          { "name": "Cardamom bun", "price": "$3.80", "description": "Soft, sticky, lightly spiced", "tag": "New" },
+          { "name": "Avocado toast", "price": "$9.50", "description": "Sourdough, poached egg, chili flakes", "tag": "" },
+          { "name": "Granola bowl", "price": "$8.00", "description": "Yoghurt, seasonal fruit, honey", "tag": "" },
+          { "name": "Soup of the day", "price": "$7.50", "description": "Served with toasted bread", "tag": "Vegan" }
+        ]
+      }
+    ],
+    "note": "Demo content: Ember & Oat is a fictional café, so these dishes and prices are examples only."
+  },
+  "highlights": {
+    "kicker": "Why people stop by",
+    "heading": "Small café, big care",
+    "intro": "Photo cards like these are easy to swap: upload a new picture, add a short description, save.",
+    "items": [
+      { "title": "Coffee made with patience", "description": "Seasonal beans, carefully dialled in every morning and served the way you like it.", "image": { "src": "/uploads/flat-white.webp", "alt": "Flat white with heart-shaped latte art on a wooden table" } },
+      { "title": "Fresh from the oven", "description": "Croissants, buns and pastries baked in small batches throughout the day.", "image": { "src": "/uploads/pastries.webp", "alt": "Glass counter filled with croissants and fruit pastries" } },
+      { "title": "Brunch, all day", "description": "Simple plates with good bread, fresh greens and eggs cooked to order.", "image": { "src": "/uploads/avocado-toast.webp", "alt": "Avocado toast on dark bread topped with a poached egg" } }
+    ]
+  },
+  "about": {
+    "kicker": "Our story (fictional)",
+    "heading": "A corner café for slow mornings",
+    "body": "Ember & Oat is an imaginary café created for this website demo. The story, menu and opening hours are sample content written to show how a real small business site could look.\n\nIn a real project, this is where the owner tells their story in their own words, and updates it whenever something changes: a new barista, a seasonal menu, a holiday schedule.",
+    "image": { "src": "/uploads/pour-over.webp", "alt": "Barista pouring hot water from a copper kettle into a pour-over coffee filter" }
+  },
+  "visit": {
+    "heading": "Opening hours & location",
+    "intro": "Hours and address are placeholders — the owner can update them in seconds, for example before a holiday.",
+    "hours": [
+      { "days": "Monday – Friday", "time": "7:30 – 18:00" },
+      { "days": "Saturday", "time": "8:30 – 17:00" },
+      { "days": "Sunday", "time": "9:00 – 15:00" }
+    ],
+    "address": "Your street address here\nDemo City",
+    "note": "Sample hours for a fictional café."
+  },
+  "contact": {
+    "heading": "Get in touch",
+    "intro": "Questions, table bookings for groups or catering? Send a message. (On this demo the form is not connected, so nothing is sent.)",
+    "submitLabel": "Send message",
+    "successMessage": "Thanks! This is a demo form, so your message was not sent anywhere. On a real site it would arrive in the owner’s inbox, protected from spam."
+  },
+  "footer": {
+    "tagline": "Ember & Oat Café is a fictional business created for a portfolio demo.",
+    "email": "hello@example.com",
+    "social": [],
+    "legal": "© 2026 Ember & Oat Café (fictional). Photos: Unsplash."
+  }
+}

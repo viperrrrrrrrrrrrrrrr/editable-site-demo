@@ -1,0 +1,43 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter/wght.css';
+@import '@fontsource-variable/fraunces/wght.css';
+
+@font-face {
+	font-family: 'Inter Fallback';
+	src: local('Arial');
+	ascent-override: 90.44%;
+	descent-override: 22.52%;
+	line-gap-override: 0%;
+	size-adjust: 107.12%;
+}
+@font-face {
+	font-family: 'Fraunces Fallback';
+	src: local('Georgia');
+	ascent-override: 92%;
+	descent-override: 24%;
+	line-gap-override: 0%;
+	size-adjust: 105%;
+}
+
+@theme {
+	--font-sans: 'Inter Variable', 'Inter Fallback', system-ui, sans-serif;
+	--font-display: 'Fraunces Variable', 'Fraunces Fallback', Georgia, serif;
+	/* All text colours checked against WCAG AA (>= 4.5:1) on white and on cream */
+	--color-brand: #5b3a29;       /* coffee — 10:1 on white */
+	--color-brand-dark: #3e271b;
+	--color-brand-soft: #f3ebe2;
+	--color-ink: #2a1d16;         /* 16:1 on white */
+	--color-muted: #5f5149;       /* 7.4:1 on white, 6.9:1 on cream */
+	--color-accent: #a3461d;      /* terracotta — 5.7:1 on white, 5.3:1 on cream */
+	--color-sand: #faf6f0;        /* cream */
+	--color-olive: #3f5a2b;       /* 8:1 on white */
+}
+
+@layer base {
+	html { scroll-behavior: smooth; }
+	@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+	body { @apply bg-white font-sans text-ink antialiased; }
+	h1, h2, h3 { font-family: var(--font-display); font-optical-sizing: auto; }
+	section[id] { scroll-margin-top: 6rem; }
+	:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; border-radius: 4px; }
+}
