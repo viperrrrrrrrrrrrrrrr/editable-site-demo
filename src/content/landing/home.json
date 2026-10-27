@@ -1,7 +1,7 @@
 {
   "seo": {
-    "title": "Ember & Oat Café — editable website by Ivan Litvin",
-    "description": "Website for a neighbourhood café. Fast, hand-coded, and the owner can edit texts, prices and photos without a developer.",
+    "title": "Ember & Oat Café — editable website demo by Ivan Litvin",
+    "description": "Demo website for a fictional neighbourhood café. Fast, hand-coded, and the owner can edit texts, prices and photos without a developer.",
     "ogImage": "/uploads/og-cafe.jpg",
     "ogImageAlt": "A flat white with latte art on a sunlit wooden table"
   },
@@ -14,9 +14,9 @@
     { "label": "Contact", "href": "#contact" }
   ],
   "hero": {
-    "eyebrow": "Neighbourhood café",
+    "eyebrow": "Neighbourhood café · fictional demo",
     "headline": "Slow coffee, warm pastries and a table by the window",
-    "subheadline": "A fast, hand-coded website whose owner can update the menu, prices and photos on their own — no developer needed.",
+    "subheadline": "Ember & Oat is a made-up café used to show a fast, hand-coded website whose owner can update the menu, prices and photos on their own — no developer needed.",
     "primaryCta": { "label": "See the menu", "href": "#menu" },
     "secondaryCta": { "label": "How editing works", "href": "#edit" },
     "image": { "src": "/uploads/cafe-interior.webp", "alt": "Quiet café interior with wooden chairs, a round table and soft window light" }
@@ -47,7 +47,7 @@
         ]
       }
     ],
-    "note": "These dishes and prices are examples only."
+    "note": "Demo content: Ember & Oat is a fictional café, so these dishes and prices are examples only."
   },
   "highlights": {
     "kicker": "Why people stop by",
@@ -60,9 +60,9 @@
     ]
   },
   "about": {
-    "kicker": "Our story",
+    "kicker": "Our story (fictional)",
     "heading": "A corner café for slow mornings",
-    "body": "The story, menu and opening hours on this page are sample content written to show how a small business site could look.\n\nIn a real project, this is where the owner tells their story in their own words, and updates it whenever something changes: a new barista, a seasonal menu, a holiday schedule.",
+    "body": "Ember & Oat is an imaginary café created for this website demo. The story, menu and opening hours are sample content written to show how a real small business site could look.\n\nIn a real project, this is where the owner tells their story in their own words, and updates it whenever something changes: a new barista, a seasonal menu, a holiday schedule.",
     "image": { "src": "/uploads/pour-over.webp", "alt": "Barista pouring hot water from a copper kettle into a pour-over coffee filter" }
   },
   "visit": {
@@ -73,19 +73,19 @@
       { "days": "Saturday", "time": "8:30 – 17:00" },
       { "days": "Sunday", "time": "9:00 – 15:00" }
     ],
-    "address": "Your street address here\nYour city",
-    "note": "Sample hours."
+    "address": "Your street address here\nDemo City",
+    "note": "Sample hours for a fictional café."
   },
   "contact": {
     "heading": "Get in touch",
-    "intro": "Questions, table bookings for groups or catering? Send a message. (On this site the form is not connected, so nothing is sent.)",
+    "intro": "Questions, table bookings for groups or catering? Send a message. (On this demo the form is not connected, so nothing is sent.)",
     "submitLabel": "Send message",
-    "successMessage": "Thanks! This form is not connected, so your message was not sent anywhere. On a live site it would arrive in the owner’s inbox, protected from spam."
+    "successMessage": "Thanks! This is a demo form, so your message was not sent anywhere. On a real site it would arrive in the owner’s inbox, protected from spam."
   },
   "footer": {
-    "tagline": "A website the café owner can edit without a developer.",
+    "tagline": "Ember & Oat Café is a fictional business created for a portfolio demo.",
     "email": "hello@example.com",
     "social": [],
-    "legal": "© 2026 Ember & Oat Café. Photos: Unsplash."
+    "legal": "© 2026 Ember & Oat Café (fictional). Photos: Unsplash."
   }
 }

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import DemoBanner from '../components/DemoBanner.astro';
 
 interface Props {
 	title: string;
@@ -39,11 +40,12 @@ const beacon = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
 		{description && <meta name="twitter:description" content={description} />}
 		{ogUrl && <meta name="twitter:image" content={ogUrl} />}
 
-		<script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebSite', name: `${siteName ?? 'Ember & Oat Café'}`, description: 'Editable website for a neighbourhood café.', url: canonical.toString() })} />
+		<script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebSite', name: `${siteName ?? 'Ember & Oat Café'} (demo website)`, description: 'Portfolio demo of an editable website for a fictional café.', url: canonical.toString() })} />
 		{beacon && <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: beacon })}></script>}
 	</head>
 	<body>
 		<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-brand focus:shadow-lg">Skip to content</a>
+		<DemoBanner />
 		<slot />
 	</body>
 </html>

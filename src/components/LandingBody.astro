@@ -170,7 +170,7 @@ const input = 'mt-1.5 w-full rounded-xl border border-stone-400 bg-white px-4 py
 			<h2 id="contact-heading" class="text-3xl font-semibold tracking-tight md:text-5xl" data-tina-field={tinaField(contact, 'heading')}>{contact?.heading}</h2>
 			{contact?.intro && <p class="mt-4 text-lg text-muted" data-tina-field={tinaField(contact, 'intro')}>{contact.intro}</p>}
 			<p class="mt-5 rounded-2xl border border-dashed border-accent/60 bg-white px-4 py-3 text-sm text-ink">
-				<strong>Please note:</strong> messages are checked in your browser only and are <strong>not sent or stored</strong> anywhere.
+				<strong>Demo form.</strong> Messages are checked in your browser only and are <strong>not sent or stored</strong> anywhere.
 			</p>
 			<!-- Inputs deliberately have no "name" attributes: even without JavaScript, submitting sends no data. -->
 			<form id="contact-form" action="#contact" method="get" class="mt-6 space-y-5 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-stone-200 md:p-8" novalidate data-success={contact?.successMessage ?? 'Thank you!'}>
@@ -215,7 +215,7 @@ const input = 'mt-1.5 w-full rounded-xl border border-stone-400 bg-white px-4 py
 	</div>
 	<div class="mx-auto mt-8 flex max-w-6xl flex-col gap-2 border-t border-white/15 px-5 pt-6 text-xs text-stone-300 sm:flex-row sm:justify-between">
 		<p data-tina-field={tinaField(footer, 'legal')}>{footer?.legal ?? `© ${year}`}</p>
-		<p><strong class="text-white">Website by Ivan Litvin</strong> · sample content</p>
+		<p><strong class="text-white">Demo website by Ivan Litvin</strong> · fictional business, sample content</p>
 	</div>
 </footer>
 </>

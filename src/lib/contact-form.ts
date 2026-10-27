@@ -20,6 +20,6 @@ export function initContactForm() {
 
 		form.reset();
 		status.className = 'min-h-6 font-semibold text-olive';
-		status.textContent = form.dataset.success || 'Your message was not sent.';
+		status.textContent = form.dataset.success || 'Demo form: your message was not sent.';
 	});
 }
